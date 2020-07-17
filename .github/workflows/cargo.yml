@@ -1,4 +1,10 @@
-on: [push, pull_request]
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
 
 name: CI
 
@@ -12,7 +18,12 @@ jobs:
       - uses: actions-rs/toolchain@v1
         name: Setup Cargo Toolchain 🛎️
         with:
-          toolchain: stable
+          components: rustfmt, clippy
+      - uses: actions-rs/cargo@v1
+        name: Running Tests 🚀
+        with:
+          command: test
+          args: --all-features
       - uses: actions-rs/cargo@v1
         name: Check Code Format 🔧
         with:
@@ -23,11 +34,6 @@ jobs:
         with:
           command: clippy
           args: --all-targets --all-features -- -D warnings
-      - uses: actions-rs/cargo@v1
-        name: Running Tests 🚀
-        with:
-          command: test
-          args: --all-features
   build:
     name: Build and Upload
     runs-on: ubuntu-latest
@@ -36,8 +42,6 @@ jobs:
         name: Checkout 🛎️
       - uses: actions-rs/toolchain@v1
         name: Setup Cargo Toolchain 🛎️
-        with:
-          toolchain: stable
       - uses: actions-rs/cargo@v1
         name: Build 🔧
         with:
