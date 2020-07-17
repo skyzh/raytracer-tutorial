@@ -1,4 +1,10 @@
-on: [push, pull_request]
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
 
 name: CI
 
@@ -14,6 +20,11 @@ jobs:
         with:
           toolchain: stable
       - uses: actions-rs/cargo@v1
+        name: Running Tests 🚀
+        with:
+          command: test
+          args: --all-features
+      - uses: actions-rs/cargo@v1
         name: Check Code Format 🔧
         with:
           command: fmt
@@ -23,11 +34,6 @@ jobs:
         with:
           command: clippy
           args: --all-targets --all-features -- -D warnings
-      - uses: actions-rs/cargo@v1
-        name: Running Tests 🚀
-        with:
-          command: test
-          args: --all-features
   build:
     name: Build and Upload
     runs-on: ubuntu-latest
