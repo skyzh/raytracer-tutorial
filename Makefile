@@ -1,3 +1,9 @@
+run:
+	cargo run
+
+run_release:
+	cargo run --release
+
 fmt:
 	cargo fmt
 
@@ -7,8 +13,7 @@ clippy:
 test:
 	cargo test --all-features
 
-run: fmt clippy test
-	cargo run --release
+ci: fmt clippy test run_release
 
 clean:
 	cargo clean
