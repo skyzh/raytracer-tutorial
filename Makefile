@@ -13,4 +13,4 @@ run: fmt clippy test
 clean:
 	cargo clean
 
-.PHONY: run clean
+.PHONY: run clean fmt clippy test
