@@ -17,6 +17,8 @@ jobs:
         name: Checkout 🛎️
       - uses: actions-rs/toolchain@v1
         name: Setup Cargo Toolchain 🛎️
+        with:
+          components: rustfmt, clippy
       - uses: actions-rs/cargo@v1
         name: Running Tests 🚀
         with:
