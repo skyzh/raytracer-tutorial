@@ -18,6 +18,7 @@ Welcome! 你可以直接点击右上角的“Use this template”将这个项目
 
 ## More Information
 
+TA Wenxin Zheng 会有更详细的说明。
 
 ### Makefile
 
