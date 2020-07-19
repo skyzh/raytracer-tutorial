@@ -196,10 +196,6 @@ mod tests {
 
     fn test_unit() {
         assert_eq!(
-            Vec3::new(0.0, 0.0, 0.0).unit(),
-            Vec3::new(0.0, 0.0, 0.0)
-        );
-        assert_eq!(
             Vec3::new(233.0, 0.0, 0.0).unit(),
             Vec3::new(1.0, 0.0, 0.0)
         );
@@ -207,6 +203,12 @@ mod tests {
             Vec3::new(-233.0, 0.0, 0.0).unit(),
             Vec3::new(-1.0, 0.0, 0.0)
         );
+    }
+
+    #[test]
+    #[should_panic]
+    fn test_unit_panic() {
+        Vec3::new(0.0, 0.0, 0.0).unit();
     }
     */
 }
