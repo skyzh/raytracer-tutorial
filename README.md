@@ -7,7 +7,7 @@ Welcome! 你可以直接点击右上角的“Use this template”将这个项目
 * 在 `Cargo.toml` 中，修改作者信息。
 * 在 `LICENSE` 中，将作者修改为自己。你也可以换成其他许可证。
 * 使用 [rustup 安装 Rust](https://doc.rust-lang.org/book/ch01-01-installation.html)。如果下载速度很慢，可以考虑使用 [SJTUG Mirror](https://mirrors.sjtug.sjtu.edu.cn) 的 rust-static 和 crates.io 镜像。
-* 之后，你需要安装一些工具。首先，你需要定位到项目目录。而后，运行 `cargo component add clippy rustfmt`
+* 之后，你需要安装一些工具。首先，你需要定位到项目目录。而后，运行 `rustup component add clippy rustfmt`
 * 接着，运行 `make ci`。如果程序可以正常运行，那么环境就已经配置成功了。
 * 将这些更改 push 到 GitHub 上。在 GitHub Action 中，“Lint and Test”和“Build and Upload”都应当通过。
 * 程序生成的结果会出现在 GitHub Action 的 artifacts 中。output 文件夹下的内容应当是程序运行时生成的。
