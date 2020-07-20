@@ -12,7 +12,7 @@ impl Vec3 {
         Self { x, y, z }
     }
 
-    pub fn unit() -> Self {
+    pub fn ones() -> Self {
         Self::new(1.0, 1.0, 1.0)
     }
 
@@ -129,7 +129,7 @@ mod tests {
     #[test]
     fn test_mul() {
         assert_eq!(
-            Vec3::new(1.0, 0.0, -1.0) * Vec3::unit(),
+            Vec3::new(1.0, 0.0, -1.0) * Vec3::ones(),
             Vec3::new(1.0, 0.0, -1.0)
         );
     }
@@ -137,7 +137,7 @@ mod tests {
     #[test]
     fn test_mul_assign() {
         let mut x = Vec3::new(1.0, 0.0, -1.0);
-        x *= Vec3::unit();
+        x *= Vec3::ones();
         assert_eq!(x, Vec3::new(1.0, 0.0, -1.0));
     }
 
