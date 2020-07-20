@@ -128,10 +128,7 @@ mod tests {
 
     #[test]
     fn test_mul() {
-        assert_eq!(
-            Vec3::new(1.0, 0.0, -1.0) * Vec3::ones(),
-            Vec3::new(1.0, 0.0, -1.0)
-        );
+        assert_eq!(Vec3::new(1.0, 0.0, -1.0) * Vec3::ones(), 0.0);
     }
 
     #[test]
@@ -194,11 +191,9 @@ mod tests {
         );
     }
 
+    #[test]
     fn test_unit() {
-        assert_eq!(
-            Vec3::new(233.0, 0.0, 0.0).unit(),
-            Vec3::new(1.0, 0.0, 0.0)
-        );
+        assert_eq!(Vec3::new(233.0, 0.0, 0.0).unit(), Vec3::new(1.0, 0.0, 0.0));
         assert_eq!(
             Vec3::new(-233.0, 0.0, 0.0).unit(),
             Vec3::new(-1.0, 0.0, 0.0)
