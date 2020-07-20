@@ -134,20 +134,13 @@ mod tests {
     #[test]
     fn test_mul_assign() {
         let mut x = Vec3::new(1.0, 0.0, -1.0);
-        x *= Vec3::ones();
-        assert_eq!(x, Vec3::new(1.0, 0.0, -1.0));
+        x *= 2.0;
+        assert_eq!(x, Vec3::new(2.0, 0.0, -2.0));
     }
 
     #[test]
     fn test_mul_f64() {
         assert_eq!(Vec3::new(1.0, 0.0, -1.0) * 1.0, Vec3::new(1.0, 0.0, -1.0));
-    }
-
-    #[test]
-    fn test_mul_assign_f64() {
-        let mut x = Vec3::new(1.0, 0.0, -1.0);
-        x *= 1.0;
-        assert_eq!(x, Vec3::new(1.0, 0.0, -1.0));
     }
 
     #[test]
