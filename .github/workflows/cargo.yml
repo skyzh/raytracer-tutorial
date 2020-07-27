@@ -42,6 +42,8 @@ jobs:
         name: Checkout 🛎️
       - uses: actions-rs/toolchain@v1
         name: Setup Cargo Toolchain 🛎️
+      - name: Download Dependencies 🛎️
+        run: wget https://github.com/google/fonts/raw/master/ofl/encodesans/static/EncodeSans-Regular.ttf
       - uses: actions-rs/cargo@v1
         name: Build 🔧
         with:
@@ -57,4 +59,3 @@ jobs:
         with:
           name: output
           path: output/
-          
