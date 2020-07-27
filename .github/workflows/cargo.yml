@@ -19,8 +19,6 @@ jobs:
         name: Setup Cargo Toolchain 🛎️
         with:
           components: rustfmt, clippy
-      - name: Download Dependencies 🛎️
-        run: wget https://github.com/google/fonts/raw/master/ofl/encodesans/static/EncodeSans-Regular.ttf
       - uses: actions-rs/cargo@v1
         name: Running Tests 🚀
         with:

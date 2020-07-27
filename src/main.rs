@@ -25,7 +25,7 @@ fn get_text() -> String {
     // only available on GitHub Action
     let github_sha = option_env!("GITHUB_SHA")
         .map(|x| "@".to_owned() + &x[0..6])
-        .unwrap_or(|| "".to_owned());
+        .unwrap_or(String::new());
     format!("{}{}", AUTHOR, github_sha)
 }
 
