@@ -1,12 +1,14 @@
 #[allow(clippy::float_cmp)]
 mod vec3;
-use image::{ImageBuffer, RgbImage};
+use image::{ImageBuffer, Rgb, RgbImage};
 use indicatif::ProgressBar;
+use rusttype::Font;
 use std::sync::mpsc::channel;
 use std::sync::Arc;
 use threadpool::ThreadPool;
-
 pub use vec3::Vec3;
+
+const AUTHOR: &'static str = "Alex Chi";
 
 struct World {
     pub height: u32,
@@ -18,12 +20,21 @@ impl World {
     }
 }
 
-fn main() {
-    let is_ci = match std::env::var("CI") {
-        Ok(x) => x == "true",
-        Err(_) => false,
-    };
+fn get_text() -> String {
+    // GITHUB_SHA is the associated commit ID
+    // only available on GitHub Action
+    let github_sha = option_env!("GITHUB_SHA")
+        .map(|x| "@".to_owned() + &x[0..6])
+        .unwrap_or("".to_owned());
+    format!("{}{}", AUTHOR, github_sha)
+}
 
+fn main() {
+    // get environment variable CI, which is true for GitHub Action
+    let is_ci = option_env!("CI").unwrap_or("") == "true";
+
+    // jobs: split image into how many parts
+    // workers: maximum allowed concurrent running threads
     let (n_jobs, n_workers): (usize, usize) = if is_ci { (32, 2) } else { (16, 2) };
 
     println!(
@@ -34,29 +45,35 @@ fn main() {
     let height = 512;
     let width = 1024;
 
+    // create a channel to send objects between threads
     let (tx, rx) = channel();
     let pool = ThreadPool::new(n_workers);
 
     let bar = ProgressBar::new(n_jobs as u64);
 
+    // use Arc to pass one instance of World to multiple threads
     let world = Arc::new(World { height });
 
     for i in 0..n_jobs {
         let tx = tx.clone();
         let world_ptr = world.clone();
         pool.execute(move || {
+            // here, we render some of the rows of image in one thread
             let row_begin = height as usize * i / n_jobs;
             let row_end = height as usize * (i + 1) / n_jobs;
             let render_height = row_end - row_begin;
             let mut img: RgbImage = ImageBuffer::new(width, render_height as u32);
             for x in 0..width {
+                // img_y is the row in partial rendered image
+                // y is real position in final image
                 for (img_y, y) in (row_begin..row_end).enumerate() {
                     let y = y as u32;
                     let pixel = img.get_pixel_mut(x, img_y as u32);
                     let color = world_ptr.color(x, y);
-                    *pixel = image::Rgb([color, color, color]);
+                    *pixel = Rgb([color, color, color]);
                 }
             }
+            // send row range and rendered image to main thread
             tx.send((row_begin..row_end, img))
                 .expect("failed to send result");
         });
@@ -65,6 +82,7 @@ fn main() {
     let mut result: RgbImage = ImageBuffer::new(width, height);
 
     for (rows, data) in rx.iter().take(n_jobs) {
+        // idx is the corrsponding row in partial-rendered image
         for (idx, row) in rows.enumerate() {
             for col in 0..width {
                 let row = row as u32;
@@ -74,7 +92,25 @@ fn main() {
         }
         bar.inc(1);
     }
+    bar.finish();
+
+    // render commit ID and author name on image
+    let render_text = get_text();
+
+    println!("Extra Info: {}", render_text);
+
+    let font: Font<'static> =
+        Font::try_from_bytes(include_bytes!("../output/EncodeSans-Regular.ttf")).unwrap();
+
+    imageproc::drawing::draw_text_mut(
+        &mut result,
+        Rgb([255, 255, 255]),
+        10,
+        10,
+        rusttype::Scale::uniform(24.0),
+        &font,
+        render_text.as_str(),
+    );
 
     result.save("output/test.png").unwrap();
-    bar.finish();
 }
