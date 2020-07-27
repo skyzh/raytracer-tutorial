@@ -25,12 +25,12 @@ fn get_text() -> String {
     // only available on GitHub Action
     let github_sha = option_env!("GITHUB_SHA")
         .map(|x| "@".to_owned() + &x[0..6])
-        .unwrap_or(String::new());
+        .unwrap_or_default();
     format!("{}{}", AUTHOR, github_sha)
 }
 
 fn is_ci() -> bool {
-    option_env!("CI").unwrap_or("") == "true"
+    option_env!("CI").unwrap_or_default() == "true"
 }
 
 fn render_text(image: &mut RgbImage, msg: &str) {
