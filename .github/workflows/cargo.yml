@@ -20,7 +20,7 @@ jobs:
         with:
           components: rustfmt, clippy
       - name: Download Dependencies 🛎️
-        run: cd output && wget https://github.com/google/fonts/raw/master/ofl/encodesans/static/EncodeSans-Regular.ttf
+        run: wget https://github.com/google/fonts/raw/master/ofl/encodesans/static/EncodeSans-Regular.ttf
       - uses: actions-rs/cargo@v1
         name: Running Tests 🚀
         with:
@@ -45,7 +45,7 @@ jobs:
       - uses: actions-rs/toolchain@v1
         name: Setup Cargo Toolchain 🛎️
       - name: Download Dependencies 🛎️
-        run: cd output && wget https://github.com/google/fonts/raw/master/ofl/encodesans/static/EncodeSans-Regular.ttf
+        run: wget https://github.com/google/fonts/raw/master/ofl/encodesans/static/EncodeSans-Regular.ttf
       - uses: actions-rs/cargo@v1
         name: Build 🔧
         with:
@@ -56,8 +56,6 @@ jobs:
         with:
           command: run
           args: --release
-      - name: Pre-Upload 🛎️
-        run: cd output && rm -rf *.ttf
       - uses: actions/upload-artifact@v2
         name: Upload Artifacts 🚀
         with:
