@@ -8,7 +8,12 @@ use std::sync::Arc;
 use threadpool::ThreadPool;
 pub use vec3::Vec3;
 
-const AUTHOR: &'static str = "Alex Chi";
+const AUTHOR: &str = "Alex Chi";
+// 1. select your favorite font on Google Fonts.
+// 2. download it into output directory.
+// 3. change the following line.
+// 4. change L23 and L48 in .github/workflows/cargo.yml
+const FONT_DATA: &[u8] = include_bytes!("../output/EncodeSans-Regular.ttf");
 
 struct World {
     pub height: u32,
@@ -99,8 +104,7 @@ fn main() {
 
     println!("Extra Info: {}", render_text);
 
-    let font: Font<'static> =
-        Font::try_from_bytes(include_bytes!("../output/EncodeSans-Regular.ttf")).unwrap();
+    let font: Font<'static> = Font::try_from_bytes(FONT_DATA).unwrap();
 
     imageproc::drawing::draw_text_mut(
         &mut result,

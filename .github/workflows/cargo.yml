@@ -56,9 +56,10 @@ jobs:
         with:
           command: run
           args: --release
+      - name: Pre-Upload 🛎️
+        run: cd output && rm -rf *.ttf
       - uses: actions/upload-artifact@v2
         name: Upload Artifacts 🚀
         with:
           name: output
           path: output/
-          
