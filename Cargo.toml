@@ -9,3 +9,4 @@ edition = "2018"
 [dependencies]
 image = "0.23"
 indicatif = "0.15"
+threadpool = "1.8"
