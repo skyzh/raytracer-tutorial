@@ -1,3 +1,5 @@
+![banner](https://user-images.githubusercontent.com/4198311/89010010-60958200-d340-11ea-80fd-e2007c72a03d.png)
+
 # PPCA raytracer
 
 Welcome! 你可以直接点击右上角的“Use this template”将这个项目复制到自己的 GitHub Profile 中。接下来，你需要做一些准备工作。
@@ -16,9 +18,9 @@ Welcome! 你可以直接点击右上角的“Use this template”将这个项目
 
 ## Task 1: Ray-tracer From Scratch
 
-## More Information
-
 TA Wenxin Zheng 会有更详细的说明。
+
+## More Information
 
 ### Makefile
 
