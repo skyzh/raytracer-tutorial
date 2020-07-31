@@ -1,4 +1,4 @@
-![banner](https://user-images.githubusercontent.com/4198311/89010010-60958200-d340-11ea-80fd-e2007c72a03d.png)
+![banner](https://user-images.githubusercontent.com/4198311/89027545-461dd180-d35d-11ea-9972-7bf1b07f942d.png)
 
 # PPCA raytracer
 
