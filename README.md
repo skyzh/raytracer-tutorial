@@ -24,7 +24,7 @@ TA Wenxin Zheng 会有更详细的说明。
 
 ## Task 2: Advanced Ray-tracer
 
-在完成 Cornell Box 的重要性采样渲染后，你可以挑选下面的任务完成。（8选3，8月5日及8月5日前完成的内容不算。）
+在完成 Cornell Box 的重要性采样渲染后，你可以挑选下面的任务完成。（8选3，8月5日上午及之前完成的内容不算。）
 
 * **Track 1: New Features** 完成 Rest of Your Life 的剩余部分，重构代码并渲染带玻璃球的 Cornell Box。
 * **Track 2: More Features** 完成 Next Week 中除 Motion Blur 外的部分，渲染噪点较少的最终场景。
