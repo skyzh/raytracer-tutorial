@@ -41,9 +41,10 @@ TA Wenxin Zheng 会有更详细的说明。
   * `codegen` 部分不需要通过 clippy。
   * 如果感兴趣，你也可以探索给过程宏传参的方法。e.g. 通过 `make_spheres_impl! { 100 }` 生成可以产生 100 个球的函数。
 * **Track 6: PDF Static Dispatch** 此项工作的前提条件是完成 Rest of your Life 的剩余部分。PDF 中需要处理的物体使用泛型完成，去除代码路径中的 `&dyn`。
-* **Track 7: More Code Generation** 在过程宏中，读取文件，直接从 yaml 或 JSON 文件生成场景对应的程序。
+* **Track 7: More Code Generation** 在过程宏中，读取文件，直接从 yaml 或 JSON 文件（选择一种即可）生成场景对应的程序。
   * 在 `data` 文件夹中给出了一些例子。
   * 例子中 `BVHNode` 里的 `bounding_box` 是冗余数据。你可以不使用这个数据。
+  * 读 JSON / yaml 可以调包。
 * **Track 8: Advanced Features** 增加对 Transform 的 PDF 支持。
 * 如果你有多余的时间，你可以通过 benchmark 来测试实现功能前后的区别。
   * 完成 Track 3 前请备份代码 (比如记录 git 的 commit id)。完成 Track 4, 5, 6 时请保留原先的场景和程序，在此基础上添加新的内容。
@@ -72,10 +73,18 @@ TA Wenxin Zheng 会有更详细的说明。
 ## Reference
 
 * [The Rust Programming Language](https://doc.rust-lang.org/book/title-page.html) 
-    * 通常来说，你只需要用到前 6 章和第 10.2 节的内容。
-    * 如果碰到了 lifetime 相关的问题，请仔细阅读第 4 章，特别是 4.2 的例子。
-    * 当然，你也可以通过第 15 章中的智能指针解决一部分 lifetime 导致的问题。
-    * Rust 的面向对象特性（trait，对应 C++ 的类）可以在 10.2 中找到。
-    * 如果你希望编写一个多线程的渲染器，可以阅读第 15、16 章的内容。
+  * 通常来说，你只需要用到前 6 章和第 10.2 节的内容。
+  * 如果碰到了 lifetime 相关的问题，请仔细阅读第 4 章，特别是 4.2 的例子。
+  * 当然，你也可以通过第 15 章中的智能指针解决一部分 lifetime 导致的问题。
+  * Rust 的面向对象特性（trait，对应 C++ 的类）可以在 10.2 中找到。
+  * 如果你希望编写一个多线程的渲染器，可以阅读第 15、16 章的内容。
 * [rustlings](https://github.com/rust-lang/rustlings) 包含许多 Rust 小练习。如果你希望通过练习来学习 Rust 语言，可以尝试一下这个参考资料。
 * [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
+* 过程宏相关
+  * [Procedural Macros](https://doc.rust-lang.org/reference/procedural-macros.html) (关注 Function-like procedural macros 即可)
+  * [quote crate](https://crates.io/crates/quote)
+* JSON / yaml 读取
+  * [serde-json](https://docs.serde.rs/serde_json/)，只需要关注其中的 untyped 部分。
+  * [yaml-rust](https://docs.rs/yaml-rust/0.4.4/yaml_rust/)
+  * 通常来说，你并不需要使用到下面这个序列化/反序列化的包。
+  * [serde](https://serde.rs)
