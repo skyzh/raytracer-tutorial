@@ -33,6 +33,7 @@ TA Wenxin Zheng 会有更详细的说明。
 * **Track 5: Code Generation** 此项工作的前提条件是完成 BVH。目前，`BVHNode` 是在运行时构造的。这个过程其实可以在编译期完成。我们可以通过过程宏生成所有的物体，并构造静态的 `BVHNode`，从而提升渲染效率。
 * **Track 6: PDF Static Dispatch** 此项工作的前提条件是完成 Rest of your Life 的剩余部分。PDF 中需要处理的物体使用泛型完成，去除代码路径中的 `&dyn`。
 * **Track 7: More Code Generation** 在过程宏中，读取文件，直接从 yaml 或 JSON 文件生成场景对应的程序。
+* **Track 8: Advanced Features** 增加对 Transform 的 PDF 支持。
 * 完成 Track 3 前请备份代码 (比如记录 git 的 commit id)。完成 Track 4, 5, 6 时请保留原先的场景和程序，在此基础上添加新的内容。完成后编写 benchmark，对比修改前后效率的提升。你可以使用 `criterion` crate 做 benchmark。benchmark 的内容可以是往构造好的场景中随机打光线，记录打一条光线所需的时间。
 
 ## More Information
