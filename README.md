@@ -45,7 +45,9 @@ TA Wenxin Zheng 会有更详细的说明。
   * 在 `data` 文件夹中给出了一些例子。
   * 例子中 `BVHNode` 里的 `bounding_box` 是冗余数据。你可以不使用这个数据。
 * **Track 8: Advanced Features** 增加对 Transform 的 PDF 支持。
-* 完成 Track 3 前请备份代码 (比如记录 git 的 commit id)。完成 Track 4, 5, 6 时请保留原先的场景和程序，在此基础上添加新的内容。完成后编写 benchmark，对比修改前后效率的提升。你可以使用 `criterion` crate 做 benchmark。benchmark 的内容可以是往构造好的场景中随机打光线，记录打一条光线所需的时间。
+* 如果你有多余的时间，你可以通过 benchmark 来测试实现功能前后的区别。
+  * 完成 Track 3 前请备份代码 (比如记录 git 的 commit id)。完成 Track 4, 5, 6 时请保留原先的场景和程序，在此基础上添加新的内容。
+  * 你可以使用 `criterion` crate 做 benchmark。benchmark 的内容可以是往构造好的场景中随机打光线，记录打一条光线所需的时间。
 
 ## More Information
 
