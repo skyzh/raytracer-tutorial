@@ -1,0 +1,15 @@
+[package]
+name = "raytracer"
+version = "0.1.0"
+authors = ["Alex Chi <iskyzh@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+image = "0.23"
+indicatif = "0.15"
+threadpool = "1.8"
+imageproc = "0.21"
+rusttype = "0.9"
+raytracer_codegen = { path = "../raytracer_codegen" }

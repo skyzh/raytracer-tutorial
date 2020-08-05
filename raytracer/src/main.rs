@@ -1,8 +1,14 @@
-#[allow(clippy::float_cmp)]
+#![allow(clippy::float_cmp)]
+#![feature(box_syntax)]
+
+mod material;
+mod scene;
 mod vec3;
+
 use image::{ImageBuffer, Rgb, RgbImage};
 use indicatif::ProgressBar;
 use rusttype::Font;
+use scene::example_scene;
 use std::sync::mpsc::channel;
 use std::sync::Arc;
 use threadpool::ThreadPool;
@@ -10,7 +16,7 @@ pub use vec3::Vec3;
 
 const AUTHOR: &str = "Alex Chi";
 
-struct World {
+pub struct World {
     pub height: u32,
 }
 
@@ -82,7 +88,7 @@ fn main() {
     let bar = ProgressBar::new(n_jobs as u64);
 
     // use Arc to pass one instance of World to multiple threads
-    let world = Arc::new(World { height });
+    let world = Arc::new(example_scene());
 
     for i in 0..n_jobs {
         let tx = tx.clone();
