@@ -4,6 +4,8 @@
 
 **UPDATE** 工科 PPCA 已结课。我们在[这里](https://github.com/skyzh/raytracer-tutorial/issues/9)保存了同学们的作品。
 
+**UPDATE** 2021 年的 PPCA raytracer-tutorial 可以在 [aik2mlj/raytracer-tutorial](https://github.com/aik2mlj/raytracer-tutorial) 查看。
+
 Welcome! 你可以直接点击右上角的“Use this template”将这个项目复制到自己的 GitHub Profile 中。接下来，你需要做一些准备工作。
 
 ## Task 0: Preparation
